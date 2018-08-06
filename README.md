@@ -42,9 +42,8 @@ Woah there! If you want to try to get up and running as soon as possible, follow
     ```
 6.  Also, I like using `pm2` to keep my bot up, but use what you like. Screen or tmux also work.
 7.  Make sure you have a `config.json` file made with the following:
-    id (your id)
-    altid (if you have an alt you use this bot with, leave it as an empty string if this doesn't apply)
-    token (because you don't want your token in the main file)
+    - ids (a list of ids that have access to commands like eval)
+    - token (because you don't want your token in the main file)
 8.  even better job
 
 If you run into issues installing, please yell at me at Xamtheking#2099 or MaxGrosshandler#6592
