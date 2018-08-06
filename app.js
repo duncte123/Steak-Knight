@@ -15,6 +15,8 @@ const client = new Client({
 });
 client.connect();
 
+const ids = config.ids;
+
 let bot = new Eris.CommandClient(
   config.token,
   {},
@@ -84,14 +86,14 @@ bot.on("messageCreate", msg => {
   }
   if (
     msg.content == "spellbound" &&
-    (msg.author.id == config.id || msg.author.id == config.altid)
+    (ids.includes(msg.author.id))
   ) {
     casting = true;
     msg.channel.createMessage("Spellbook opened.");
   }
   if (
     msg.content == "starstruck" &&
-    (msg.author.id == config.id || msg.author.id == config.altid)
+    (ids.includes(msg.author.id))
   ) {
     casting = false;
     msg.channel.createMessage("Spellbook closed.");
@@ -99,14 +101,14 @@ bot.on("messageCreate", msg => {
   if (
     msg.content == "eris" &&
     casting &&
-    (msg.author.id == config.id || msg.author.id == config.altid)
+    (ids.includes(msg.author.id))
   ) {
     msg.channel.createMessage("https://abal.moe/Eris/");
   }
   if (
     msg.content == "frequency" &&
     casting &&
-    (msg.author.id == config.id || msg.author.id == config.altid)
+    (ids.includes(msg.author.id))
   ) {
     freqOn = !freqOn;
     msg.channel.createMessage("Switch flipped.");
@@ -206,7 +208,7 @@ bot.registerCommand(
 bot.registerCommand(
   "eval",
   async (msg, args) => {
-    if (msg.author.id == config.id || msg.author.id == config.altid) {
+    if (ids.includes(msg.author.id)) {
       let toExecute;
       let code = args.join(" ");
       if (code.split("\n").length === 1)
